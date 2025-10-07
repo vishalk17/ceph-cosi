@@ -5,9 +5,10 @@ Sample Driver that provides reference implementation for Container Object Storag
 ## Installing CRDs, COSI controller, Node adapter
 
 ```console
-kubectl create -k github.com/kubernetes-sigs/container-object-storage-interface-api
+kubectl create ns ceph-cosi-driver
+kubectl -n ceph-cosi-driver create -k github.com/kubernetes-sigs/container-object-storage-interface-api
 
-kubectl create -k github.com/kubernetes-sigs/container-object-storage-interface-controller
+kubectl -n ceph-cosi-driver create -k github.com/kubernetes-sigs/container-object-storage-interface-controller
 ```
 
 Following pods will running in the default namespace :
@@ -52,7 +53,7 @@ docker tag ceph-cosi-driver:latest ceph/ceph-cosi-driver:latest
 Now start the sidecar and cosi driver with:
 
 ```console
-kubectl apply -k .
+kubectl -n ceph-cosi-driver apply -k .
 kubectl -n ceph-cosi-driver get pods
 NAME                                         READY   STATUS    RESTARTS   AGE
 objectstorage-provisioner-6c8df56cc6-lqr26   2/2     Running   0          26h

@@ -56,8 +56,7 @@ spec:
       - name: objectstorage-provisioner-sidecar
         image: gcr.io/k8s-staging-sig-storage/objectstorage-sidecar:latest
         imagePullPolicy: IfNotPresent
-        args:
-        - "--v=5"
+        args: []
         volumeMounts:
         - mountPath: /var/lib/cosi
           name: socket
